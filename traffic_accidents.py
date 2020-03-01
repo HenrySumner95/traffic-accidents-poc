@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-from pprint import pprint
 
 website_url = (requests
                .get('https://en.wikipedia.org/wiki/List_of_countries_by_traffic-related_death_rate#List')

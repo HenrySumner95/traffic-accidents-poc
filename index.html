@@ -6,4 +6,12 @@
         <svg style = "width : 500; height : 500"></svg>
     </body>
 
+    <script>
+        d3.csv("traffic_accidents.csv", function (myArrayOfObjects) {
+            myArrayOfObjects.array.forEach(function (d){
+                console.log(d)
+            });
+        })
+    </script>
+
 </html>
