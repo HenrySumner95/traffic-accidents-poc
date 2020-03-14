@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
+#Get Wikipedia page on global traffic accidents
 website_url = (requests
                .get('https://en.wikipedia.org/wiki/List_of_countries_by_traffic-related_death_rate#List')
                .text)
@@ -40,7 +41,15 @@ for i_list in item_list:
     df = df.append(row_df)
 
 df = df.reset_index(drop = True)
+#Get first four characters of year column
 df['Source year'] = df['Source year'].str[:4]
+#Remove commas from numerical fields
+df['Total fatalities latest year'] = df['Total fatalities latest year'].str.replace(",", "")
+#Rename columns
+df = df.rename(columns = {'Fatalities per 100K pop'       : 'deaths_per_100k_capita',
+                          'Fatalities per 1bil km'        : 'deaths_per_1bil_km',
+                          'Fatalities per 100K vehicles'  : 'deaths_per_100k_vehicles',
+                          'Total fatalities latest year'  : 'deaths_latest_year'})
 
 df = df[:7]
 

@@ -3,15 +3,31 @@
     <script src="https://d3js.org/d3.v5.js"></script>
 
     <body style = "background-color: #222;">
-        <svg style = "width : 500; height : 500"></svg>
+        <svg style = "width : 250; height : 250">
+			<rect x = "50" y = "50" width = "20" height = "20"></rect></svg>
     </body>
 
     <script>
-        d3.csv("traffic_accidents.csv", function (myArrayOfObjects) {
-            myArrayOfObjects.array.forEach(function (d){
-                console.log(d)
-            });
+		
+		var file = "https://raw.githubusercontent.com/HenrySumner95/traffic-accidents-poc/master/traffic_accidents.csv"
+		
+        d3.csv(file, function (d) {
+            
+            console.log(d);
         })
+		
+		var svg = d3.select("body").append("svg");
+		
+		svg.attr("width", "250");
+		svg.attr("height", "250");
+		
+		var rect = svg.append("rect");
+		
+		rect.attr("x", 50);
+		rect.attr("y", 50);
+		rect.attr("width", 20);
+		rect.attr("height", 20);
+		
     </script>
-
+ 
 </html>
